@@ -43,11 +43,19 @@ int main(int argc, char* argv[])
 
     if (argc == 1 || arg == "help")
     {
-        help(); //calling help function
+        help(); //call help function
     }
     else if (arg == "add")
     {
-        
+        if (argc == 2) //if called function add without task 
+        {
+            cout << "Missing task. Nothing added" << endl;
+        }
+        else //if called function add with given task
+        {
+            arg2 = argv[2];
+            add(arg2); //call add function
+        }
     }
     else if (arg == "del")
     {
@@ -55,7 +63,7 @@ int main(int argc, char* argv[])
     }
     else if (arg == "rep")
     {
-    
+        rep(); //call report function
     }
     else if (arg == "done")
     {
@@ -63,7 +71,7 @@ int main(int argc, char* argv[])
     }
     else if (arg == "list")
     {
-        
+        list(); //call list function
     }
     
     
