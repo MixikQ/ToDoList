@@ -100,9 +100,57 @@ int rep() //show completed tasks
 
 }
 
-int done() //mark task as completed
+int done(int key_number) //mark task as completed
 {
+    int year, month, date, z;
+    vector <string> v;
+    string arg, x;
 
+    time_t ttime = time(0);
+    tm* local_time = localtime(&ttime);
+    year = local_time -> tm_year + 1900;
+    month = local_time -> tm_mon + 1;
+    date = local_time -> tm_mday;
+    //get year, month and date data
+
+    ifstream read;
+    read.open("todo.txt");
+
+    while (getline(read, arg))
+    {
+        v.push_back(arg);
+    }
+    read.close();
+
+    if (key_number > v.size()) //if number of task does not exist
+    {
+        cout << "Entered not existing number. Nothing happend" << endl;
+    }
+    else //if entered existing number of task
+    {
+        ofstream write1, write2;
+        write1.open("todo.txt");
+        write2.open("done.txt", ios::app);
+        
+        for (int i = 0; i < v.size(); i++)
+        {
+            if (i == key_number - 1)
+            {
+                x = v[i];
+                cout << "Task #" << key_number << " marked as completed" << endl;
+            }
+            else
+            {
+                write1 << v[i] << endl;
+            }
+        }
+        write1.close();
+
+        write2 << "x " << year << "/" << month << "/" << date << " " << x << endl; 
+        write2.close();
+    }
+    
+    return 0;
 }
 
 int list() //show list of uncompleted tasks
@@ -164,7 +212,7 @@ int main(int argc, char* argv[])
             arg2 = argv[2];
             key_number = stoi(arg2);
 
-            if (k > 0)
+            if (key_number > 0)
             {
             done(key_number); //call done function
             }
