@@ -59,7 +59,16 @@ int main(int argc, char* argv[])
     }
     else if (arg == "del")
     {
-    
+        if (argc == 2) //if called function without number of task to delete
+        {
+            cout << "No task to delete. Nothing deleted" << endl;
+        }
+        else //delete task
+        {
+            arg2 = argv[2];
+            key_number = stoi(arg2);
+            del(key_number); //call delete function
+        }
     }
     else if (arg == "rep")
     {
@@ -71,11 +80,11 @@ int main(int argc, char* argv[])
         {
             cout << "No task to mark as completed" << endl;
         }
-        else //will delete completed task and add it to report list
+        else //delete completed task and add it to report list
         {
             arg2 = argv[2];
             key_number = stoi(arg2);
-            del(key_number); //call delete function
+            done(key_number); //call done function
         }
     }
     else if (arg == "list")
