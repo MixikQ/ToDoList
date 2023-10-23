@@ -1,3 +1,5 @@
+#include <bits/stdc++.h>
+#include <sstream>
 #include <iostream>
 using namespace std;
 
@@ -6,9 +8,57 @@ int help() //show list of possible actions
 
 }
 
-int add() //add a task
+int add(string arg) //add a task
 {
+    int pending, done;
+    string temp;
+    vector <string> v;
+    
+    ifstream read;
+    read.open("todo.txt");
 
+    while (getline(read, temp))
+    {
+        v.push_back(temp);
+    }
+    read.close();
+
+    bool check = false;
+
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (arg == v[i]) 
+        {
+            check = true; //task is already added earlier, needed to refresh it
+        }
+    }
+    
+    if (check == false) //if task is new
+    {
+        fstream write;
+        write.open("todo.txt", ios::app);
+        write << arg << endl;
+        cout << "Added task: " << "\"" << arg << "\"" << endl;
+        write.close();
+    }
+    else
+    {
+        ofstream write;
+        write.open("todo.txt");
+        for (int i = 0; i < v.size(); i++)
+        {
+            if (v[i] != arg)
+            {
+                write << v[i] << endl;
+            }
+        }
+
+        write << arg << endl;
+        cout << "Added task: " << "\"" << arg << "\"" << endl;
+        write.close();
+    }
+
+    return 0;
 }
 
 int del() //delete a task
