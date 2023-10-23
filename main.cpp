@@ -61,9 +61,38 @@ int add(string arg) //add a task
     return 0;
 }
 
-int del() //delete a task
+int del(int key_number) //delete a task
 {
+    string arg;
+    vector <string> v;
 
+    ifstream read;
+    read.open("todo.txt");
+    while (getline(read, arg))
+    {
+        v.push_back(arg);
+    }
+    read.close();
+
+    if (key_number > v.size() || key_number < 1) //entered number of task does not exist 
+    {
+        cout << "No task to delete. Nothing deleted" << endl;
+    }
+    else //delete task with entered number
+    {
+        ofstream write;
+        write.open("todo.txt");
+        for (int i = 0; i < v.size(); i++)
+        {
+            if (i != key_number - 1)
+            {
+                write << v[i] << endl;
+            }
+        }
+        cout << "Deleted task #" << key_number << endl;
+    }
+    
+    return 0;
 }
 
 int rep() //show completed tasks
