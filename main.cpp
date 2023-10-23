@@ -84,7 +84,15 @@ int main(int argc, char* argv[])
         {
             arg2 = argv[2];
             key_number = stoi(arg2);
+
+            if (k > 0)
+            {
             done(key_number); //call done function
+            }
+            else
+            {
+                cout << "Wrong number. Nothing marked as completed" << endl;
+            }
         }
     }
     else if (arg == "list")
