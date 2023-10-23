@@ -34,7 +34,7 @@ int list() //show list of uncompleted tasks
 int main(int argc, char* argv[])
 {
     string arg, arg2;
-    int k = 0;
+    int key_number = 0;
 
     if (argc > 1)
     {
@@ -67,7 +67,16 @@ int main(int argc, char* argv[])
     }
     else if (arg == "done")
     {
-    
+        if (argc == 2) //if called function without number of completed task
+        {
+            cout << "No task to mark as completed" << endl;
+        }
+        else //will delete completed task and add it to report list
+        {
+            arg2 = argv[2];
+            key_number = stoi(arg2);
+            del(key_number); //call delete function
+        }
     }
     else if (arg == "list")
     {
