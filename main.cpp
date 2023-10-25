@@ -12,8 +12,8 @@ int help() //show list of possible actions
     cout << "$ main.exe add \"task\" \t\t\t#Add a new task" << endl;
     cout << "$ main.exe del \"number of task\" \t#Delete a task" << endl;
     cout << "$ main.exe done \"number of task\" \t#Mark task as completed" << endl;
-    cout << "$ main.exe lst \t\t\t\t#Show list of uncompleted tasks" << endl;
-    cout << "$ main.exe rep \t\t\t\t#Show list of completed tasks" << endl;
+    cout << "$ main.exe list \t\t\t#Show list of uncompleted tasks" << endl;
+    cout << "$ main.exe rep \t\t\t\t#Show amount of completed and uncompleted tasks" << endl;
 }
 
 int add(string arg) //add a task
@@ -103,7 +103,7 @@ int del(int key_number) //delete a task
     return 0;
 }
 
-int rep() //show completed tasks
+int rep() //show amount of completed tasks
 {
     int pending = 0, done = 0;
     string arg;
@@ -136,7 +136,7 @@ int rep() //show completed tasks
     month = local_time -> tm_mon + 1;
     date = local_time -> tm_mday;
 
-    cout << year << "/" << month << "/" << date << " " << "Pending tasks: " << pending << "Completed tasks: " << done << endl;
+    cout << year << "/" << month << "/" << date << "\n" << "Pending tasks: " << pending << "\nCompleted tasks: " << done << endl;
 
     return 0;
 }
@@ -250,7 +250,7 @@ int main(int argc, char* argv[])
             add(arg2); //call add function
         }
     }
-    else if (arg == "del")
+    else if (arg == "del" || arg == "delete" || arg == "remove")
     {
         if (argc == 2) //if called function without number of task to delete
         {
@@ -263,11 +263,11 @@ int main(int argc, char* argv[])
             del(key_number); //call delete function
         }
     }
-    else if (arg == "rep")
+    else if (arg == "rep" || arg == "report" || arg == "status")
     {
         rep(); //call report function
     }
-    else if (arg == "done")
+    else if (arg == "done" || arg == "complete")
     {
         if (argc == 2) //if called function without number of completed task
         {
@@ -288,7 +288,7 @@ int main(int argc, char* argv[])
             }
         }
     }
-    else if (arg == "lst")
+    else if (arg == "lst" || arg == "list")
     {
         lst(); //call function lst() 
     }
