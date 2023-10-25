@@ -103,7 +103,40 @@ int del(int key_number) //delete a task
 
 int rep() //show completed tasks
 {
+    int pending = 0, done = 0;
+    string arg;
+    int year, month, date;
 
+    ifstream read;
+    read.open("todo.txt"); //count pending tasks
+    if (read)
+    {
+        while (getline(read, arg))
+        {
+            pending++;
+        }
+    }
+    read.close();
+
+    read.open("done.txt"); //count completed tasks
+    if (read)
+    {
+        while (getline(read, arg))
+        {
+            done++;
+        }
+    }
+    read.close();
+
+    time_t ttime = time(0);
+    tm* local_time = localtime(&ttime);
+    year = local_time -> tm_year + 1900;
+    month = local_time -> tm_mon + 1;
+    date = local_time -> tm_mday;
+
+    cout << year << "/" << month << "/" << date << " " << "Pending tasks: " << pending << "Completed tasks: " << done << endl;
+
+    return 0;
 }
 
 int done(int key_number) //mark task as completed
