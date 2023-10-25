@@ -6,12 +6,12 @@ using namespace std;
 int help() //show list of possible actions
 {
     cout << "How to use to-do-list:" << endl;
-    cout << "$ ./todoapp help #Show short descriprion of all existing commands" << endl;
-    cout << "$ ./todoapp add \"task\" #Add a new task" << endl;
-    cout << "$ ./todoapp del \"number of task\" #Delete a task" << endl;
-    cout << "$ ./todoapp done \"number of task\" #Mark task as completed" << endl;
-    cout << "$ ./todoapp lst #Show list of uncompleted tasks" << endl;
-    cout << "$ ./todoapp rep #Show list of completed tasks" << endl;
+    cout << "$ main.exe help #Show short descriprion of all existing commands" << endl;
+    cout << "$ main.exe add \"task\" #Add a new task" << endl;
+    cout << "$ main.exe del \"number of task\" #Delete a task" << endl;
+    cout << "$ main.exe done \"number of task\" #Mark task as completed" << endl;
+    cout << "$ main.exe lst #Show list of uncompleted tasks" << endl;
+    cout << "$ main.exe rep #Show list of completed tasks" << endl;
 }
 
 int add(string arg) //add a task
