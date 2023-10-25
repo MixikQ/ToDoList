@@ -5,13 +5,15 @@ using namespace std;
 
 int help() //show list of possible actions
 {
-    cout << "How to use to-do-list:" << endl;
-    cout << "$ main.exe help #Show short descriprion of all existing commands" << endl;
-    cout << "$ main.exe add \"task\" #Add a new task" << endl;
-    cout << "$ main.exe del \"number of task\" #Delete a task" << endl;
-    cout << "$ main.exe done \"number of task\" #Mark task as completed" << endl;
-    cout << "$ main.exe lst #Show list of uncompleted tasks" << endl;
-    cout << "$ main.exe rep #Show list of completed tasks" << endl;
+    cout << "\nHow to use to-do-list:" << endl;
+    cout << "Firstly open Command Prompt and cd to the directory with main.exe" << endl;
+    cout << "Then you can use commands below: \n" << endl;
+    cout << "$ main.exe help \t\t\t#Show short descriprion of all existing commands" << endl;
+    cout << "$ main.exe add \"task\" \t\t\t#Add a new task" << endl;
+    cout << "$ main.exe del \"number of task\" \t#Delete a task" << endl;
+    cout << "$ main.exe done \"number of task\" \t#Mark task as completed" << endl;
+    cout << "$ main.exe lst \t\t\t\t#Show list of uncompleted tasks" << endl;
+    cout << "$ main.exe rep \t\t\t\t#Show list of completed tasks" << endl;
 }
 
 int add(string arg) //add a task
