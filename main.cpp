@@ -5,7 +5,13 @@ using namespace std;
 
 int help() //show list of possible actions
 {
-
+    cout << "How to use to-do-list:" << endl;
+    cout << "$ ./todoapp help #Show short descriprion of all existing commands" << endl;
+    cout << "$ ./todoapp add \"task\" #Add a new task" << endl;
+    cout << "$ ./todoapp del \"number of task\" #Delete a task" << endl;
+    cout << "$ ./todoapp done \"number of task\" #Mark task as completed" << endl;
+    cout << "$ ./todoapp lst #Show list of uncompleted tasks" << endl;
+    cout << "$ ./todoapp rep #Show list of completed tasks" << endl;
 }
 
 int add(string arg) //add a task
@@ -153,7 +159,7 @@ int done(int key_number) //mark task as completed
     return 0;
 }
 
-int list() //show list of uncompleted tasks
+int lst() //show list of uncompleted tasks
 {
     string arg;
     vector <string> v;
@@ -247,11 +253,10 @@ int main(int argc, char* argv[])
             }
         }
     }
-    else if (arg == "list")
+    else if (arg == "lst")
     {
-        list(); //call list function
+        lst(); //call function lst() 
     }
-    
-    
-    
+
+    return 0;
 }
