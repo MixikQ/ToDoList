@@ -155,7 +155,32 @@ int done(int key_number) //mark task as completed
 
 int list() //show list of uncompleted tasks
 {
+    string arg;
+    vector <string> v;
 
+    ifstream read;
+    read.open("todo.txt");
+    while(getline(read, arg))
+    {
+        v.push_back(arg);
+    }
+    read.close();
+
+    if (v.size() == 0)
+    {
+        cout << "There are no list of tasks" << endl;
+    }
+    else
+    {
+        for (int i = v.size() -1; i >= 0 ; i--)
+        {
+            arg = v.back();
+            v.pop_back();
+            cout << "[" << i+1 << "] " << arg << endl;
+        }
+    }
+    
+    return 0;
 }
 
 int main(int argc, char* argv[])
